@@ -26,7 +26,7 @@ export class MyCard extends LitElement {
         display: inline-flex;
       }
       :host([shiny]) a {
-        
+        background-color: blue;
       }a {
         background-color: pink;
         color: black;
