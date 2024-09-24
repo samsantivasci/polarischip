@@ -14,9 +14,11 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "My Cards";
+    this.title = "";
+    this.buttonTitle ="";
+    this.image = "#";
     this.link = '#';
-    this.shiny= false;
+    
 
   }
 
@@ -25,27 +27,50 @@ export class MyCard extends LitElement {
       :host {
         display: inline-flex;
       }
-      :host([shiny]) a {
-        background-color: blue;
-      }a {
+      div {
+        border: solid black 4px;
+        font-size: 16px;
+        text-decoration: none;
+        margin: 24px;
+        border-radius: 24px;
+        max-width: 200px;
+        padding: 16px;
+
+      }
+    
+      a {
         background-color: pink;
         color: black;
-        font-size: 24px;
-        padding: 16px;
-        margin: 8px;
+        font-size: 16px;
+        border-style: solid;
+        padding: 8px 16px ;
+        margin: 32px ;
+        text-decoration: none;
+      }
+      a:hover, 
+      a:focus{
+        color:white;
+      }
+      img{
+        height:auto;
+        max-width: 200px;
+        margin:auto; 
       }
     `
 
 
   }
   render() {
-    return html`<a href= "${this.link}">${this.title}</a>`;
+        return html`<div><img src='${this.image}'><h3>${this.title}</h3><p>${this.text}</p><a href='${this.link}'>${this.buttonTitle}</a></div>`
   }
 
   static get properties() {
     return {
       title: { type: String },
       link: {type: String }, 
+      image: {type: String},
+      text: {type: String},
+      buttonTitle: {type: String},
     };
   }
 }
