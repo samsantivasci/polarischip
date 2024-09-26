@@ -18,6 +18,7 @@ export class MyCard extends LitElement {
     this.buttonTitle ="";
     this.image = "#";
     this.link = '#';
+    this.fancy = false;
     
 
   }
@@ -25,7 +26,13 @@ export class MyCard extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: inline-flex;
+        display: inline-block;
+      }
+      :host([fancy]) {
+        display: block;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
       }
       div {
         border: solid black 4px;
@@ -37,7 +44,23 @@ export class MyCard extends LitElement {
         padding: 16px;
 
       }
-    
+      details summary {
+       text-align: left;
+     font-size: 20px;
+      padding: 16px 0;
+  }
+
+  details[open] summary {
+    font-weight: bold;
+  }
+  
+  details div {
+    border: 2px solid black;
+    text-align: left;
+    padding: 16px;
+    height: 70px;
+    overflow: auto;
+  }
       a {
         background-color: pink;
         color: black;
@@ -61,7 +84,29 @@ export class MyCard extends LitElement {
 
   }
   render() {
-        return html`<div><img src='${this.image}'><h3>${this.title}</h3><p>${this.text}</p><a href='${this.link}'>${this.buttonTitle}</a></div>`
+        return html`<div><img src='${this.image}'>
+        <h3>${this.title}</h3>
+        <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+        <summary>Description</summary>
+        <div>
+       <slot>${this.description}</slot>
+       <p>${this.text}</p>
+        </div>
+      </details>
+      <a href='${this.link}'>${this.buttonTitle}</a>
+      </div>`
+       
+  
+      }
+      
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
   }
 
   static get properties() {
@@ -71,6 +116,7 @@ export class MyCard extends LitElement {
       image: {type: String},
       text: {type: String},
       buttonTitle: {type: String},
+      fancy: { type: Boolean, reflect: true },
     };
   }
 }
