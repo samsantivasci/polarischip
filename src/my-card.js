@@ -44,7 +44,7 @@ export class MyCard extends LitElement {
         font-size: 16px;
         border-style: solid;
         padding: 8px 16px ;
-        margin: 32px ;
+        margin: 32px;
         text-decoration: none;
       }
       a:hover, 
