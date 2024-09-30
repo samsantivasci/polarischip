@@ -26,11 +26,11 @@ export class MyCard extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: inline-block;
+        display: inline-flex;
       }
       :host([fancy]) {
         display: block;
-        background-color: pink;
+        background-color: lightskyblue;
         border: 2px solid fuchsia;
         box-shadow: 10px 5px 5px red;
       }
@@ -47,7 +47,7 @@ export class MyCard extends LitElement {
       details summary {
        text-align: left;
      font-size: 20px;
-      padding: 16px 0;
+      padding: 32px 0;
   }
 
   details[open] summary {
@@ -57,7 +57,7 @@ export class MyCard extends LitElement {
   details div {
     border: 2px solid black;
     text-align: left;
-    padding: 16px;
+    padding: 32px;
     height: 70px;
     overflow: auto;
   }
@@ -116,7 +116,7 @@ export class MyCard extends LitElement {
       image: {type: String},
       text: {type: String},
       buttonTitle: {type: String},
-      fancy: { type: Boolean, reflect: true },
+      fancy: {type: Boolean, reflect: true },
     };
   }
 }
