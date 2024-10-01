@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
+
 /**
  * Now it's your turn. Here's what we need to try and do:
  * 1. Get you HTML from your card working in here 
@@ -89,8 +90,10 @@ export class MyCard extends LitElement {
         <details ?open="${this.fancy}" @toggle="${this.openChanged}">
         <summary>Description</summary>
         <div>
-       <slot>${this.description}</slot>
-       <p>${this.text}</p>
+       <slot><true-false-question question="HAX is a game changer.">
+<input type="checkbox" value="True" correct="correct" role="textbox">
+<input type="checkbox" value="False">
+</true-false-question></slot>
         </div>
       </details>
       <a href='${this.link}'>${this.buttonTitle}</a>

@@ -2,6 +2,7 @@
 // more modern (relatively speaking) and allows the web to feel like
 // a full blown development environment
 import { LitElement, html, css } from 'lit';
+import '@haxtheweb/multiple-choice.js';
 
 // export means that other JS files can reference this JS file and
 // pull in this class
